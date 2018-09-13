@@ -3,7 +3,7 @@
 
 
 <br>
-  <h1 class="titletext">Scrivi il tuo problema</h1>
+  <h1 class="titletext">Aggiungi un tag al problema</h1>
 <br>
 <div class="container">
   <div id="success">
@@ -16,9 +16,9 @@
 {% csrf_token %}
 
 
-    <button type="submit"  name="In Attesa" class="save btn btn-primary">In Attesa</button>
-    <button type="submit"  name="Riparato!" class="save btn btn-primary">Riparato!</button>
-    <button type="submit"  name="Rimandato" class="save btn btn-primary">Rimandato</button>
+    <button type="submit"  name="In Attesa" class="save btn btn-warning">In Attesa</button>
+    <button type="submit"  name="Riparato!" class="save btn btn-success">Riparato!</button>
+    <button type="submit"  name="Rimandato" class="save btn btn-dark">Rimandato</button>
     <br>
   </div>
 </form>

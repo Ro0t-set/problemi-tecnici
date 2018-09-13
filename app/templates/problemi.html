@@ -4,12 +4,61 @@
 
 
 <br>
+
+
+
 <div class="container">
+  <div class="card bg-light mb-3" style="max-width: 30rem;">
+    <div class="card-header">Legenda</div>
+    <b style="color:red;">Problema da risolvere</b>
+    <b style="color:#e6e600;">Qualcuno sta andando a risolverlo</b>
+    <b style="color:green;">Risolto</b>
+    <b style="color:black;">Verrà risolto nei prossimi giorni</b>
+    </div>
+  </div>
+  <br>
   <div class="center">
     <table id="problemitable" class='table' cellpadding="10">
       <tr id="tableheader"><th scope="col"> Classe</th><th scope="col">Autore</th><th scope="col">Problemi<th scope="col">Data</th><th scope="col">Edit</th scope="col"></tr>
       {%for problemi in problemi%}
-        <tr class="tabledata" scope="row"><td scope="col">{{problemi.classe}}</td><td>{{problemi.autore}}</td><td>{{problemi.risoluzione}}</td><td>{{problemi.published_date}}</td><td><a class="btn btn-default" href="{% url 'problema_edit' problema_id=problemi.id %}">modifiche</a></td></tr>
+        <tr class="tabledata" scope="row"><td scope="col">{{problemi.classe}}</td><td>{{problemi.autore}}</td><td>
+        <center>  <div class=tag{{problemi.id}}></div></center>
+          {%if problemi.risoluzione == 0%}
+          <style>.tag{{problemi.id}} {
+                          	width:20px;
+                          	height:20px;
+                          	border-radius:50px;
+                          	background:red;
+                          }
+          </style>
+          {%elif problemi.risoluzione == 1%}
+          <style>.tag{{problemi.id}} {
+                            width:20px;
+                            height:20px;
+                            border-radius:50px;
+                            background:#e6e600;
+                          }
+          </style>
+
+          {%elif problemi.risoluzione == 2%}
+          <style>.tag{{problemi.id}} {
+                          	width:20px;
+                          	height:20px;
+                          	border-radius:50px;
+                          	background:green;
+                          }
+          </style>
+          {%elif problemi.risoluzione == 3%}
+          <style>.tag{{problemi.id}} {
+                          	width:20px;
+                          	height:20px;
+                          	border-radius:50px;
+                          	background:black;
+                          }
+          </style>
+          {%endif%}
+
+        </td><td>{{problemi.published_date}}</td><td><a class="btn btn-default" href="{% url 'problema_edit' problema_id=problemi.id %}">modifiche</a></td></tr>
       {% endfor %}
     </table>
   </div>
