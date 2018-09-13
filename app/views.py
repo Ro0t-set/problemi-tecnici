@@ -62,4 +62,22 @@ def problemi(request):
 
 @login_required(login_url='/login/')
 def problema_edit(request, problema_id):
-    return render(request, 'problema_edit.html', {})
+    problema = Problema.objects.get(id=problema_id)
+
+    if  'In Attesa'in request.POST:
+        problema.risoluzione= 1
+        problema.save()
+        return redirect('problemi')
+    elif  'Riparato!'in request.POST:
+        problema.risoluzione= 2
+        problema.save()
+        return redirect('problemi')
+    elif  'Rimandato'in request.POST:
+        problema.risoluzione= 3
+        problema.save()
+        return redirect('problemi')
+
+
+
+
+    return render(request, 'problema_edit.html', {'problema':problema})

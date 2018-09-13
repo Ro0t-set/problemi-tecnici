@@ -1,1 +1,25 @@
-bella
+{% extends 'base.html' %}
+{% block content %}
+
+
+<br>
+  <h1 class="titletext">Scrivi il tuo problema</h1>
+<br>
+<div class="container">
+  <div id="success">
+    {{success|safe}}
+  </div>
+</div>
+
+<form method="POST" class="form-group">
+  <div class="box container" id="boxcontainer">
+{% csrf_token %}
+
+
+    <button type="submit"  name="In Attesa" class="save btn btn-primary">In Attesa</button>
+    <button type="submit"  name="Riparato!" class="save btn btn-primary">Riparato!</button>
+    <button type="submit"  name="Rimandato" class="save btn btn-primary">Rimandato</button>
+    <br>
+  </div>
+</form>
+{% endblock %}
