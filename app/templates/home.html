@@ -1,11 +1,27 @@
-
+{% extends 'base.html' %}
 {% block content %}
-    <h1>Scrivi il tuo problema</h1>
+<br>
+  <h1 class="titletext">Scrivi il tuo problema</h1>
+<br>
+
 <form method="POST">
-  {% csrf_token %}
-{{form}}
+  <div class="box" id="boxcontainer">
+{% csrf_token %}
+<!--{{form.as_p}}-->
 
-          <button type="submit" class="save btn btn-primary">Save</button>
+    <ul style="list-style-type:none">
 
-  </form>
+      <li>
+          Classe: {{form.classe}}
+      </li>
+      <br>
+      Descrizione del problema:
+      <li>
+        {{form.descrizioneProblema}}
+      </li>
+    </ul>
+    <button type="submit" class="save btn btn-primary">Salva</button>
+    <br>
+  </div>
+</form>
 {% endblock %}

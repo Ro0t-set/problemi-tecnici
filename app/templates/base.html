@@ -1,0 +1,18 @@
+
+{% load staticfiles %}
+{% load static %}
+
+
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <meta charset="utf-8">
+    <title>Problemi Tecnici | Galileo Galilei Perugia</title>
+  </head>
+  <body>
+    {% block content %}
+    {% endblock %}
+    <script src="{% static 'main.js' %}"></script>
+  </body>
+</html>
