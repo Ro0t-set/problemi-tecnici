@@ -1,0 +1,11 @@
+
+{% block content %}
+    <h1>Scrivi il tuo problema</h1>
+<form method="POST">
+  {% csrf_token %}
+{{form}}
+
+          <button type="submit" class="save btn btn-primary">Save</button>
+
+  </form>
+{% endblock %}

@@ -1,0 +1,9 @@
+
+{% block content %}
+{%for problemi in problemi%}
+<br>
+{{problemi.classe}}, {{problemi.autore}}, {{problemi.risoluzione}}, {{problemi.published_date}}
+<a class="btn btn-default" href="{% url 'problema_edit' problema_id=problemi.id %}">modifiche</a>
+<p>__________________________</p>
+{%endfor%}
+{% endblock %}
