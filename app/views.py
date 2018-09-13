@@ -37,7 +37,7 @@ from django.contrib import messages
 
 @login_required(login_url='/login/')
 def home(request):
-
+    successtext = ''
     if request.method == "POST":
         form = PubbicaProblema(request.POST)
         if form.is_valid():
@@ -46,12 +46,12 @@ def home(request):
             problema.autore = request.user
             problema.published_date = timezone.now()
             problema.save()
-
+            successtext = '<div class="alert alert-success"><strong>Operazione completata con successo!</strong> La sua richiesta è stata accettata</div>'
 
     else:
         form = PubbicaProblema()
 
-    return render(request, 'home.html', {'form' : form})
+    return render(request, 'home.html', {'form' : form, 'success': successtext})
 
 @login_required(login_url='/login/')
 def problemi(request):

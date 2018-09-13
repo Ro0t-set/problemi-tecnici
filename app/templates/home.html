@@ -5,11 +5,18 @@
 <br>
   <h1 class="titletext">Scrivi il tuo problema</h1>
 <br>
+<div class="container">
+  <div id="success">
+    {{success|safe}}
+  </div>
+</div>
 
 <form method="POST" class="form-group">
   <div class="box container" id="boxcontainer">
 {% csrf_token %}
 <!--{{form.as_p}}-->
+
+
 
     <ul style="list-style-type:none">
 
