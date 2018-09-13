@@ -34,3 +34,7 @@ form {
 .center {
   margin: 0px auto;
 }
+
+td {
+  text-align: center;
+}
