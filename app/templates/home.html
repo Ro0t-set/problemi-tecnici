@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-<br>
-  <h1 class="titletext">Scrivi il tuo problema</h1>
 <br>
 <div class="container">
   <div id="success">
+    <div class="alert alert-dark" role="alert">
+        <h3>Benvenuti nell'area risoluzione problemi del Liceo Galileo Galilei</h3>
+      </div>
     {{success|safe}}
   </div>
 </div>
 
+<!--<h1 class="titletext">Scrivi il tuo problema</h1>-->
+<br>
 <form method="POST" class="form-group">
   <div class="box container" id="boxcontainer">
 {% csrf_token %}
