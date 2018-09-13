@@ -6,10 +6,10 @@
 <br>
 <div class="container">
   <div class="center">
-    <table id="problemitable" cellpadding="10">
-      <tr id="tableheader"><th>Classe</th><th>Autore</th><th>Problemi<th>Data</th><th>Edit</th></tr>
+    <table id="problemitable" class='table' cellpadding="10">
+      <tr id="tableheader"><th scope="col"> Classe</th><th scope="col">Autore</th><th scope="col">Problemi<th scope="col">Data</th><th scope="col">Edit</th scope="col"></tr>
       {%for problemi in problemi%}
-        <tr class="tabledata"><td>{{problemi.classe}}</td><td>{{problemi.autore}}</td><td>{{problemi.risoluzione}}</td><td>{{problemi.published_date}}</td><td><a class="btn btn-default" href="{% url 'problema_edit' problema_id=problemi.id %}">modifiche</a></td></tr>
+        <tr class="tabledata" scope="row"><td scope="col">{{problemi.classe}}</td><td>{{problemi.autore}}</td><td>{{problemi.risoluzione}}</td><td>{{problemi.published_date}}</td><td><a class="btn btn-default" href="{% url 'problema_edit' problema_id=problemi.id %}">modifiche</a></td></tr>
       {% endfor %}
     </table>
   </div>
