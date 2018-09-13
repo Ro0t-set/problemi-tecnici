@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+
+
 <br>
   <h1 class="titletext">Scrivi il tuo problema</h1>
 <br>
 
-<form method="POST">
-  <div class="box" id="boxcontainer">
+<form method="POST" class="form-group">
+  <div class="box container" id="boxcontainer">
 {% csrf_token %}
 <!--{{form.as_p}}-->
 
@@ -15,9 +17,9 @@
           Classe: {{form.classe}}
       </li>
       <br>
-      Descrizione del problema:
+
       <li>
-        {{form.descrizioneProblema}}
+        Descrizione del problema: {{form.descrizioneProblema}}
       </li>
     </ul>
     <button type="submit" class="save btn btn-primary">Salva</button>

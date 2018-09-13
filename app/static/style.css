@@ -1,12 +1,9 @@
 body {
-  background: #0052b6; /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #0052b6 13%, #0188ff 50%, #0078e8 68%, #63b9ff 81%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #0052b6 13%,#0188ff 50%,#0078e8 68%,#63b9ff 81%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #0052b6 13%,#0188ff 50%,#0078e8 68%,#63b9ff 81%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0052b6', endColorstr='#63b9ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background-color: black;
   color:white;
 }
 html, body {
+  background-color: black
   width: 100%;
 }
 form {
@@ -24,6 +21,11 @@ form {
   padding: 20px;
   margin: 0px auto;
   /*width: 50%;*/
-  background-color: rgba(1, 1, 255, 0.7);
   border-radius: 5%;
+}
+#id_descrizioneProblema {
+  width: 70%;
+  text-align: left;
+  margin: 0px auto;
+
 }

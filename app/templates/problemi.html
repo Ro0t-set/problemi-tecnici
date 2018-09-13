@@ -1,9 +1,14 @@
+{% extends 'base.html' %}
 
 {% block content %}
-{%for problemi in problemi%}
+
+
 <br>
-{{problemi.classe}}, {{problemi.autore}}, {{problemi.risoluzione}}, {{problemi.published_date}}
-<a class="btn btn-default" href="{% url 'problema_edit' problema_id=problemi.id %}">modifiche</a>
-<p>__________________________</p>
-{%endfor%}
+<table id="problemitable">
+  <tr id="tableheader"><th>Classe</th><th>Autore</th><th>Problemi<th>Data</th><th>Edit</th></tr>
+  {%for problemi in problemi%}
+  <tr class="tabledata"><td>{{problemi.classe}}</td><td>{{problemi.autore}}</td><td>{{problemi.risoluzione}}</td><td>{{problemi.published_date}}</td><td><a class="btn btn-default" href="{% url 'problema_edit' problema_id=problemi.id %}">modifiche</a></td></tr>
+  {% endfor %}
+</table>
+
 {% endblock %}
