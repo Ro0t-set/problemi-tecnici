@@ -19,9 +19,11 @@
   <br>
   <div class="center">
     <table id="problemitable" class='table' cellpadding="10">
-      <tr id="tableheader"><th scope="col"> Classe</th><th scope="col">Autore</th><th scope="col">Problemi<th scope="col">Data</th><th scope="col">Edit</th scope="col"></tr>
+      <tr id="tableheader"><th scope="col"> Classe</th><th scope="col">Autore</th><th scope="col">Descrizione</th><th scope="col">Tag<th scope="col">Data</th><th scope="col">Edit</th scope="col"></tr>
+
       {%for problemi in problemi%}
-        <tr class="tabledata" scope="row"><td scope="col">{{problemi.classe}}</td><td>{{problemi.autore}}</td><td>
+        <tr class="tabledata" scope="row"><td scope="col">{{problemi.classe}}</td><td>{{problemi.autore}}</td><td>{{problemi.descrizioneProblema}}</td>
+          <td>
         <center>  <div class=tag{{problemi.id}}></div></center>
           {%if problemi.risoluzione == 0%}
           <style>.tag{{problemi.id}} {
@@ -58,7 +60,8 @@
           </style>
           {%endif%}
 
-        </td><td>{{problemi.published_date}}</td><td><a class="btn btn-default" href="{% url 'problema_edit' problema_id=problemi.id %}">modifiche</a></td></tr>
+        </td><td>{{problemi.published_date}}</td>
+        <td><a class="btn btn-default" href="{% url 'problema_edit' problema_id=problemi.id %}">modifiche</a></td></tr>
       {% endfor %}
     </table>
   </div>
