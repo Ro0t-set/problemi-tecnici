@@ -1,2 +1,3 @@
 
 *.pyc
+app/static/.DS_Store
