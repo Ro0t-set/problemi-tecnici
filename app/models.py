@@ -16,7 +16,8 @@ class Aula(models.Model):
 class Problema(models.Model):
     autore = models.ForeignKey('auth.User')
     classe = models.ForeignKey('Aula')
-    descrizioneProblema = models.TextField(blank=True)
+    descrizioneProblema = models.TextField(max_length=1000, default="")
+    note = models.TextField(blank=True)
     risoluzione=  models.IntegerField(default=0)
     created_date = models.DateTimeField(
         default=timezone.now)
