@@ -67,21 +67,13 @@ def home(request):
 def problemi(request):
     problemi = Problema.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 
-    return render(request, 'problemi.html', {'problemi' : problemi ,})
+    return render(request, 'problemi.html', {'problemi' : problemi })
 
 
 @login_required(login_url='/login/')
 def problema_edit(request, problema_id):
     problema = get_object_or_404(Problema, id=problema_id)
 
-    if  'note' in request.POST:
-        form = NoteProblema(request.POST, instance=problema)
-        if form.is_valid():
-            notaProblema = form.save(commit=False)
-            print(notaProblema)
-            notaProblema.save()
-    else:
-        form = NoteProblema(instance=problema)
 
 
     if  'In Attesa' in request.POST:
@@ -96,6 +88,16 @@ def problema_edit(request, problema_id):
         problema.risoluzione= 3
         problema.save()
         return redirect('problemi')
+    
+
+    if  'note' in request.POST:
+        form = NoteProblema(request.POST, instance=problema)
+        if form.is_valid():
+            print("ma che cszz")
+            notaProblema = form.save(commit=False)
+            notaProblema.save()
+    else:
+        form = NoteProblema(instance=problema)
 
 
 
