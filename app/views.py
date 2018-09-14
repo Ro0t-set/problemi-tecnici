@@ -75,6 +75,13 @@ def problema_edit(request, problema_id):
     problema = get_object_or_404(Problema, id=problema_id)
 
 
+    if  'note' in request.POST:
+        form = NoteProblema(request.POST, instance=problema)
+        if form.is_valid():
+            problema.save()
+            print("ma che cazz")
+    else:
+        form = NoteProblema(instance=problema)
 
     if  'In Attesa' in request.POST:
         problema.risoluzione= 1
@@ -88,17 +95,6 @@ def problema_edit(request, problema_id):
         problema.risoluzione= 3
         problema.save()
         return redirect('problemi')
-    
-
-    if  'note' in request.POST:
-        form = NoteProblema(request.POST, instance=problema)
-        if form.is_valid():
-            print("ma che cszz")
-            notaProblema = form.save(commit=False)
-            notaProblema.save()
-    else:
-        form = NoteProblema(instance=problema)
-
 
 
 

@@ -32,11 +32,15 @@
     <br>
 
 <br><br>
-{{form}}
-<br>
-    <button type="submit" name="note" class="save btn btn-primary">Salva nota</button>
   </div>
 </div>
+</form>
+
+<form method="POST" class="form-group">
+  {% csrf_token %}
+{{form}}
+<br>
+    <button type="submit" name="NoteProblema" class="save btn btn-primary">Salva nota</button>
 </form>
 
 {%else%}
