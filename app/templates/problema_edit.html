@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
+{%if user.is_staff%}
 <br>
   <h1 class="titletext">Aggiungi un tag al problema</h1>
 <br>
@@ -33,4 +33,7 @@
   </div>
 </div>
 </form>
+{%else%}
+<h2>Pagina riservata allo staff autorizzato</h2>
+{%endif%}
 {% endblock %}

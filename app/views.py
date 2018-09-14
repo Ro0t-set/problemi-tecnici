@@ -50,7 +50,6 @@ def home(request):
 
     else:
         form = PubbicaProblema()
-
     return render(request, 'home.html', {'form' : form, 'success': successtext})
 
 @login_required(login_url='/login/')

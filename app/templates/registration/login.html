@@ -1,0 +1,42 @@
+<!-- login.html --><center>
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block head %}{% endblock %}
+{% block content %}
+
+
+    <!--
+    <form method="post" action=".">{% csrf_token %}
+        <table border="0">
+            <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
+            <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
+        </table>
+        <input type="submit" value="Login" />
+        <input type="hidden" name="next" value="/home" />
+    </form>
+    <a href="/register">Register</a>
+-->
+
+<div class="col col-lg-6">
+<br>
+<br>
+<h3></h3>
+<br>
+    {% if form.errors %}
+        <p style="color: red;">Il tuo username o la tua password non sono corretti. Riprova!</p>
+    {% endif %}
+    <form class="form" method="post" action="." >
+        {% csrf_token %}
+        <input type="text" placeholder="Username" name="username" class="form-control">
+        <br>
+        <input type="password" placeholder="Password" name="password" class="form-control">
+        <br>
+        <button type="submit"  value="Login" id="login-button" class="form-control">Login</button>
+
+        <input type="hidden" name="next" value="{% url 'home' %}" />
+    </form>
+</div>
+
+
+{% endblock %}
+</center>
