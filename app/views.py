@@ -48,6 +48,14 @@ def home(request):
             problema.save()
             successtext = '<div class="alert alert-success"><strong>Operazione completata con successo!</strong> La sua richiesta è stata accettata</div>'
 
+            #invio della mail
+            subject, from_email, to = 'Problema Tecnico', 'problemitecnicigalilei@gmail.com', 'problemitecnicigalilei@gmail.com'
+            text_content = '456'
+            html_content =  ( str(form) )
+            msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+
     else:
         form = PubbicaProblema()
     return render(request, 'home.html', {'form' : form, 'success': successtext})
