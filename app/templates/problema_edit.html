@@ -9,11 +9,21 @@
   <div id="success">
     {{success|safe}}
   </div>
+  <table class="table">
+    <tr scope="row"><td>Autore: {{ problema.autore }}</td></tr>
+    <tr><td>Classe: {{ problema.classe }}</td></tr>
+    <tr><td scope="row">Descizione: {{ problema.descrizioneProblema}}</td></tr>
+  </table>
 </div>
+
 
 <form method="POST" class="form-group">
   <div class="box container" id="boxcontainer">
 {% csrf_token %}
+<div class="container">
+
+
+
 
 
     <button type="submit"  name="In Attesa" class="save btn btn-warning">In Attesa</button>
@@ -21,5 +31,6 @@
     <button type="submit"  name="Rimandato" class="save btn btn-dark">Rimandato</button>
     <br>
   </div>
+</div>
 </form>
 {% endblock %}
