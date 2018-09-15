@@ -11,6 +11,9 @@ form {
   margin: 0px auto;
   text-align: center;
 }
+table {
+  width: 800px;
+}
 .titletext {
   width: 50%;
   margin: 0px auto;
