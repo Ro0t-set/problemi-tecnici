@@ -66,7 +66,6 @@ def home(request):
 @login_required(login_url='/login/')
 def problemi(request):
     problemi = Problema.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-
     return render(request, 'problemi.html', {'problemi' : problemi })
 
 
@@ -75,7 +74,7 @@ def problema_edit(request, problema_id):
     problema = get_object_or_404(Problema, id=problema_id)
 
 
-    if  'note' in request.POST:
+    if  'NoteProblema' in request.POST:
         form = NoteProblema(request.POST, instance=problema)
         if form.is_valid():
             problema.save()
