@@ -74,12 +74,16 @@ def problemi(request):
 def problema_edit(request, problema_id):
     problema = get_object_or_404(Problema, id=problema_id)
 
+    notesuccesstext = ''
 
     if  'note' in request.POST:
         form = NoteProblema(request.POST, instance=problema)
         if form.is_valid():
             problema.save()
             print("ma che cazz")
+            notesuccesstext = '<div class="alert alert-success"><strong>Operazione completata con successo!</strong> La tua nota è stata salvata</div>'
+        else:
+            notesuccesstext = '<div class="alert alert-warning"><strong>Operazione non completata!</strong> La tua nota non è stata salvata</div>'
     else:
         form = NoteProblema(instance=problema)
 
@@ -99,4 +103,4 @@ def problema_edit(request, problema_id):
 
 
 
-    return render(request, 'problema_edit.html', {'problema':problema, 'form':form})
+    return render(request, 'problema_edit.html', {'problema':problema, 'form':form, 'notesuccess': notesuccesstext})
