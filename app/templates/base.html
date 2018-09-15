@@ -31,7 +31,17 @@
       <h5><a class="nav-link" href="/problemi"><font color="black">Problemi</font></a></h5>
     </li>
   </ul>
-
+</div>
+    </ul>
+    <span class="navbar-text">
+      {% if user.is_authenticated %}
+      {{user}}
+      <a href="{% url 'logout' %}?next=/">|  logout</a>
+      {%else%}
+      <a href="/login">login</a>
+      {%endif%}
+    </span>
+  </div>
 </nav>
 </div>
     {% block content %}

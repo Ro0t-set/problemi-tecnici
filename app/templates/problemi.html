@@ -7,15 +7,19 @@
 
 
 
-<div class="container">
-  <div class="card bg-light mb-3" style="max-width: 30rem;">
+<center>
+  <div class="card border-secondary mb-3" style="max-width: 18rem;">
     <div class="card-header">Legenda</div>
+
     <b style="color:red;">Problema da risolvere</b>
     <b style="color:#e6e600;">Qualcuno sta andando a risolverlo</b>
     <b style="color:green;">Risolto</b>
     <b style="color:black;">Verrà risolto nei prossimi giorni</b>
     </div>
   </div>
+</center>
+  <div class="container">
+    <div class="call-8"
   <br>
   <div class="center">
     <table id="problemitable" class='table' cellpadding="10">
@@ -61,9 +65,12 @@
           {%endif%}
 
         </td><td>{{problemi.published_date}}</td>
+        {%if user.is_staff%}
         <td><a class="btn btn-default" href="{% url 'problema_edit' problema_id=problemi.id %}">modifiche</a></td></tr>
+        {%endif%}
       {% endfor %}
     </table>
+  </div>
   </div>
 </div>
 {% endblock %}

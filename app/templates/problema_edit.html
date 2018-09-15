@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
+{%if user.is_staff%}
 <br>
   <h1 class="titletext">Aggiungi un tag al problema</h1>
 <br>
@@ -30,7 +30,20 @@
     <button type="submit"  name="Riparato!" class="save btn btn-success">Riparato!</button>
     <button type="submit"  name="Rimandato" class="save btn btn-dark">Rimandato</button>
     <br>
+
+<br><br>
   </div>
 </div>
 </form>
+
+<form method="POST" class="form-group">
+  {% csrf_token %}
+{{form}}
+<br>
+    <button type="submit" name="NoteProblema" class="save btn btn-primary">Salva nota</button>
+</form>
+
+{%else%}
+<h2>Pagina riservata allo staff autorizzato</h2>
+{%endif%}
 {% endblock %}

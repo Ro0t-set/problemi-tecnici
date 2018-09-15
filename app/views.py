@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from .models import Aula,Problema
-from .forms import PubbicaProblema
+from .forms import PubbicaProblema, NoteProblema
 
 from django.utils import timezone
 from django.shortcuts import get_object_or_404, render
@@ -48,31 +48,50 @@ def home(request):
             problema.save()
             successtext = '<div class="alert alert-success"><strong>Operazione completata con successo!</strong> La sua richiesta è stata accettata</div>'
 
+            #invio della mail (solo di prova per evitare errori in eventuale connessione ad internet assente)
+            try:
+                subject, from_email, to = 'Problema Tecnico', 'problemitecnicigalilei@gmail.com', 'problemitecnicigalilei@gmail.com'
+                text_content = '456'
+                html_content =  ( str(form) )
+                msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+                msg.attach_alternative(html_content, "text/html")
+                msg.send()
+            except:
+                pass
+
     else:
         form = PubbicaProblema()
-
     return render(request, 'home.html', {'form' : form, 'success': successtext})
 
 @login_required(login_url='/login/')
 def problemi(request):
     problemi = Problema.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 
-    return render(request, 'problemi.html', {'problemi' : problemi ,})
+    return render(request, 'problemi.html', {'problemi' : problemi })
 
 
 @login_required(login_url='/login/')
 def problema_edit(request, problema_id):
-    problema = Problema.objects.get(id=problema_id)
+    problema = get_object_or_404(Problema, id=problema_id)
 
-    if  'In Attesa'in request.POST:
+
+    if  'note' in request.POST:
+        form = NoteProblema(request.POST, instance=problema)
+        if form.is_valid():
+            problema.save()
+            print("ma che cazz")
+    else:
+        form = NoteProblema(instance=problema)
+
+    if  'In Attesa' in request.POST:
         problema.risoluzione= 1
         problema.save()
         return redirect('problemi')
-    elif  'Riparato!'in request.POST:
+    elif  'Riparato!' in request.POST:
         problema.risoluzione= 2
         problema.save()
         return redirect('problemi')
-    elif  'Rimandato'in request.POST:
+    elif  'Rimandato' in request.POST:
         problema.risoluzione= 3
         problema.save()
         return redirect('problemi')
@@ -80,4 +99,4 @@ def problema_edit(request, problema_id):
 
 
 
-    return render(request, 'problema_edit.html', {'problema':problema})
+    return render(request, 'problema_edit.html', {'problema':problema, 'form':form})
