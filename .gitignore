@@ -5,3 +5,4 @@ app/migrations/__pycache__/__init__.cpython-36.pyc
 app/migrations/__pycache__/0001_initial.cpython-36.pyc
 app/__pycache__/models.cpython-36.pyc
 *.pyc
+app/templates/info.html
