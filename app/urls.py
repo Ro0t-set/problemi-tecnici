@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^(?P<problema_id>[0-9]+)/problema_edit/$', views.problema_edit, name='problema_edit'),
     url(r'^login/$', login, name='login'),
     url(r'^logout/$', logout, name='logout'),
+    url(r'^info/$', views.info, name='info'),
     ]

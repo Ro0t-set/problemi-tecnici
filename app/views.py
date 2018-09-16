@@ -103,3 +103,6 @@ def problema_edit(request, problema_id):
 
 
     return render(request, 'problema_edit.html', {'problema':problema, 'form':form, 'notesuccess': notesuccesstext})
+
+def info(request):
+    return render(request, 'info.html', {})
