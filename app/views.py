@@ -28,12 +28,18 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.db.models import Count
 from django.contrib.postgres.search import SearchVector
-from django.db.models import Q
+#from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth.validators import ASCIIUsernameValidator
 from django.template.loader import render_to_string
 from django.http import Http404
 from django.contrib import messages
+import os
+from datetime import date
+import sys
+import io
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
 
 @login_required(login_url='/login/')
 def home(request):
@@ -106,3 +112,8 @@ def problema_edit(request, problema_id):
 
 def info(request):
     return render(request, 'info.html', {})
+
+def pdf(request):
+    all_problems = Problema.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    file.close()
+    return render(request, 'pdf.html', {'problemi': all_problems})

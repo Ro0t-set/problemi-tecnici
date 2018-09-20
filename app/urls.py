@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^login/$', login, name='login'),
     url(r'^logout/$', logout, name='logout'),
     url(r'^info/$', views.info, name='info'),
+    url(r'^pdf/$', views.pdf, name='pdf'),
     ]
