@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+<br>
 <div class="container">
+  <div id="warnings"></div>
   <h3>Inserisci l'intervallo (nel formato (YYYY/MM/DD))in cui il database cercherà oppure in alternativa clicca su 'Vedi tutti'</h3>
   <br>
   <h6>Inizio</h6>
@@ -18,9 +20,52 @@
   <button onclick="getall()">Vedi tutti</button>
 </div>
 <script>
+
+function invaliddate() {
+  document.getElementById('warnings').innerHTML = '<div class="alert alert-warning"><strong>Per Favore immetti una data valida</strong></div>'
+}
+function incompletedata() {
+  document.getElementById('warnings').innerHTML = '<div class="alert alert-warning"><strong>Per Favore immetti tutti i campi</strong></div>'
+}
+
 function get() {
-  URL = 'http://127.0.0.1:8000/pdf/' + document.getElementById('startyear').value + '/' + document.getElementById('startmonth').value + '/' + document.getElementById('startday').value + '/' + document.getElementById('endyear').value + '/' + document.getElementById('endmonth').value
-  URL = URL + '/' + document.getElementById('endday').value + '/'
+
+  start = [document.getElementById('startyear').value, document.getElementById('startmonth').value, document.getElementById('startday').value]
+  end = [document.getElementById('endyear').value, document.getElementById('endmonth').value, document.getElementById('endday').value]
+
+
+  if (start[0] == '' || start[1] == '' || start[2] == '') {
+    incompletedata()
+    return
+  }
+  if (end[0] == '' || end[1] == '' || end[2] == '') {
+    incompletedata()
+    return
+  }
+  console.log(start[1].length)
+  console.log(end)
+  if (start[1].length == 1) {
+    start[1] = '0' + start[1]
+  }
+  if (start[2].length == 1) {
+    start[2] = '0' + start[2]
+  }
+
+  URL = 'http://127.0.0.1:8000/pdf/' + start[0] + '/' + start[1] + '/' + start[2] + '/' + end[0] + '/' + end[1]
+  URL = URL + '/' + end[2] + '/'
+
+  if (start[2] > 31) {
+    invaliddate()
+    return
+  }
+  if (start[1] > 12) {
+    invaliddate()
+    return
+  }
+  if (start[0] < 1000) {
+    invaliddate()
+    return
+  }
 
   win = window.open(URL);
 }
