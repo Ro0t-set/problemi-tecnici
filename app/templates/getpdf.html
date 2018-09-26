@@ -14,7 +14,8 @@
   <input type="number" id="endday" placeholder="DD">
   <br>
   <br>
-  <button onclick="get()">Cerca</button><button onclick="veditutti">Vedi tutti</button>
+  <button onclick="get()">Cerca</button>
+  <button onclick="getall()">Vedi tutti</button>
 </div>
 <script>
 function get() {
@@ -23,6 +24,10 @@ function get() {
 
   win = window.open(URL);
 }
-
+function getall() {
+  console.log('si')
+  URL = 'http://127.0.0.1:8000/getall/'
+  win = window.open(URL)
+}
 </script>
 {% endblock %}
