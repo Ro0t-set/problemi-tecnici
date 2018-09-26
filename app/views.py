@@ -113,7 +113,15 @@ def problema_edit(request, problema_id):
 def info(request):
     return render(request, 'info.html', {})
 
-def pdf(request):
-    all_problems = Problema.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    file.close()
-    return render(request, 'pdf.html', {'problemi': all_problems})
+def pdf(request, yearstart, monthstart, daystart, yearend, monthend, dayend):
+    sd = [yearstart, monthstart, daystart]
+    ed = [yearend, monthend, dayend]
+    ms = '-'.join(sd)
+    me = '-'.join(ed)
+    all_problems = Problema.objects.filter(published_date__range=(ms, me))
+    print(all_problems)
+    p = "<table class='table'><th scope='col'>Classe</th><th scope='col'>Autore</th><th scope='col'>Descizione</th><th scope='col'>Data</th>"
+    for prob in all_problems:
+        p = p + "<tr scope='row'><td scope='col'>{0}</td><td scope='col'>{1}</td><td scope='col'>{2}</td><td scope='col'>{3}</td></tr>".format(prob.autore, prob.classe, prob.descrizioneProblema, prob.published_date)
+    p = p + "</table>"
+    return render(request, 'pdf.html', {'pdf': p})
