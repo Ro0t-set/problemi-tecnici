@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h3>Inserisci l'intervallo (nel formato (YYYY/MM/DD))in cui il database cercherà oppure in alternativa clicca su 'Vedi tutti'</h3>
+  <br>
+  <h6>Inizio</h6>
+  <input type="number" id="startyear" placeholder="YYYY">
+  <input type="number" id="startmonth" placeholder="MM">
+  <input type="number" id="startday" placeholder="DD">
+  <br>
+  <h6>Fine</h6>
+  <input type="number" id="endyear" placeholder="YYYY">
+  <input type="number" id="endmonth" placeholder="MM">
+  <input type="number" id="endday" placeholder="DD">
+  <br>
+  <br>
+  <button onclick="get()">Cerca</button><button onclick="veditutti">Vedi tutti</button>
+</div>
+<script>
+function get() {
+  URL = 'http://127.0.0.1:8000/pdf/' + document.getElementById('startyear').value + '/' + document.getElementById('startmonth').value + '/' + document.getElementById('startday').value + '/' + document.getElementById('endyear').value + '/' + document.getElementById('endmonth').value
+  URL = URL + '/' + document.getElementById('endday').value + '/'
+
+  win = window.open(URL);
+}
+
+</script>
+{% endblock %}

@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^login/$', login, name='login'),
     url(r'^logout/$', logout, name='logout'),
     url(r'^info/$', views.info, name='info'),
-    url(r'^pdf/(?P<yearstart>[0-9]{4})/(?P<monthstart>[0-9]{2})/(?P<daystart>[0-9]{2})/(?P<yearend>[0-9]{4})/(?P<monthend>[0-9]{2})/(?P<dayend>[0-9]{2})$', views.pdf),
-    
+    url(r'^pdf/(?P<yearstart>[0-9]{4})/(?P<monthstart>[0-9]{2})/(?P<daystart>[0-9]{2})/(?P<yearend>[0-9]{4})/(?P<monthend>[0-9]{2})/(?P<dayend>[0-9]{2})/$', views.pdf),
+    url(r'^getpdf/$', views.getpdf),
+    url(r'^getall/$', views.getall),
     ]

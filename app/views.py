@@ -125,3 +125,15 @@ def pdf(request, yearstart, monthstart, daystart, yearend, monthend, dayend):
         p = p + "<tr scope='row'><td scope='col'>{0}</td><td scope='col'>{1}</td><td scope='col'>{2}</td><td scope='col'>{3}</td></tr>".format(prob.autore, prob.classe, prob.descrizioneProblema, prob.published_date)
     p = p + "</table>"
     return render(request, 'pdf.html', {'pdf': p})
+
+def getpdf(request):
+    return render(request, 'getpdf.html', {})
+
+def getall(request):
+    all_problems = Problema.objects.all()
+    print(all_problems)
+    p = "<table class='table'><th scope='col'>Classe</th><th scope='col'>Autore</th><th scope='col'>Descizione</th><th scope='col'>Data</th>"
+    for prob in all_problems:
+        p = p + "<tr scope='row'><td scope='col'>{0}</td><td scope='col'>{1}</td><td scope='col'>{2}</td><td scope='col'>{3}</td></tr>".format(prob.autore, prob.classe, prob.descrizioneProblema, prob.published_date)
+    p = p + "</table>"
+    return render(request, 'pdf.html', {'pdf': p})
