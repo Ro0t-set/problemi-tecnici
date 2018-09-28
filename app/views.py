@@ -118,7 +118,12 @@ def pdf(request, yearstart, monthstart, daystart, yearend, monthend, dayend):
     ed = [yearend, monthend, dayend]
     ms = '-'.join(sd)
     me = '-'.join(ed)
-    all_problems = Problema.objects.filter(published_date__range=(ms, me))
+    all_problems = list()
+    try:
+        all_problems = Problema.objects.filter(published_date__range=(ms, me))
+    except:
+       return render(request, 'datainvalida.html')
+
     if len(all_problems) == 0:
         return render(request, 'nessunproblema.html', {})
     print(all_problems)
