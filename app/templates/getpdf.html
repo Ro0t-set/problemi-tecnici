@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{%if user.is_staff%}
 <br>
 <div class="container">
   <div id="warnings"></div>
@@ -74,4 +75,7 @@ function getall() {
   win = window.open(URL)
 }
 </script>
+{%else%}
+<p>Utente non autorizzato. Necessita di account con privilegi staff</p>
+{% endif %}
 {% endblock %}
