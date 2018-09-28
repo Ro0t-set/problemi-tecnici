@@ -51,7 +51,7 @@ function get() {
     start[2] = '0' + start[2]
   }
 
-  URL = 'http://127.0.0.1:8000/pdf/' + start[0] + '/' + start[1] + '/' + start[2] + '/' + end[0] + '/' + end[1]
+  URL = 'http://10.67.30.230/pdf/' + start[0] + '/' + start[1] + '/' + start[2] + '/' + end[0] + '/' + end[1]
   URL = URL + '/' + end[2] + '/'
 
   if (start[2] > 31) {
@@ -62,7 +62,7 @@ function get() {
     invaliddate()
     return
   }
-  if (start[0] < 1000) {
+  if (start[0] < 2000) {
     invaliddate()
     return
   }
@@ -70,7 +70,7 @@ function get() {
   win = window.open(URL);
 }
 function getall() {
-  URL = 'http://127.0.0.1:8000/getall/'
+  URL = 'http://10.67.30.230/getall/'
   win = window.open(URL)
 }
 </script>
