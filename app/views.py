@@ -120,7 +120,7 @@ def pdf(request, yearstart, monthstart, daystart, yearend, monthend, dayend):
     me = '-'.join(ed)
     all_problems = Problema.objects.filter(published_date__range=(ms, me))
     if len(all_problems) == 0:
-        return render(request, '<p>Non vi è nessun problema in questo periodo</p>', {})
+        return render(request, 'nessunproblema.html', {})
     print(all_problems)
     p = "<table class='table'><th scope='col'>Classe</th><th scope='col'>Autore</th><th scope='col'>Descizione</th><th scope='col'>Data</th>"
     for prob in all_problems:
@@ -134,7 +134,7 @@ def getpdf(request):
 def getall(request):
     all_problems = Problema.objects.all()
     if len(all_problems) == 0:
-        return render(request, '<p>Non vi è nessun problema</p>', {})
+        return render(request, 'nessunproblema.html', {})
     print(all_problems)
     p = "<table class='table'><th scope='col'>Classe</th><th scope='col'>Autore</th><th scope='col'>Descizione</th><th scope='col'>Data</th>"
     for prob in all_problems:
